@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prédictions IA – Dépôt</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .console-box {
+      font-family: monospace;
+      background-color: #1a1a1a;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 20px #00ff88;
+      color: #00ff88;
+      height: 250px;
+      overflow-y: auto;
+    }
+    .loading-screen {
+      font-family: monospace;
+      background: #000;
+      color: #00ff88;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+      z-index: 50;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    .hidden-screen { display: none; }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+  <div id="loading" class="loading-screen">
+    <p>Chargement... Veuillez patienter pendant que nous préparons votre expérience.</p>
+  </div>
+  <div id="mainContent" class="hidden-screen">
+    <header class="w-full bg-gray-800 p-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-green-400">Prédictions IA 1xBet</h1>
+      <nav class="space-x-4">
+        <a href="#how" class="hover:text-green-400">Comment ça marche</a>
+        <a href="#games" class="hover:text-green-400">Jeux</a>
+        <a href="#start" class="hover:text-green-400">Démarrer</a>
+      </nav>
+    </header>
+    <section class="min-h-screen flex flex-col items-center justify-center px-4 text-center">
+      <h2 class="text-3xl md:text-5xl font-bold mb-6">
+        Gagnez de l'argent réel avec les prédictions de jeux IA
+      </h2>
+      <div class="mb-4 text-lg font-semibold text-yellow-300">
+        👋 Bienvenue sur le service officiel de <span class="text-green-400">Tarek Bako</span> !
+      </div>
+      <p class="max-w-xl mb-8 text-gray-300">
+        Rejoignez des milliers d'utilisateurs qui profitent de notre IA intelligente sur Aviator, Mines et Penalty. 98 % de précision, prédictions en temps réel et retraits instantanés !
+      </p>
+      <input id="userId" type="text" placeholder="Entrez votre ID 1xBet" class="bg-gray-700 text-white p-3 rounded-md mb-4" />
+      <button id="connectButton" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-xl text-lg transition">Connecter le compte</button>
+      <div id="connectionSuccess" class="hidden text-green-400 font-bold mt-6">
+        <p>ID de compte : <span id="accountIdDisplay">1234567890</span> connecté avec succès !</p>
+        <p>Statut : Actif | Précision des prédictions : 100 % | Algorithme IA analysé</p>
+        <button id="getSignalButton" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-xl text-lg transition mt-4">Obtenir le signal</button>
+      </div>
+      <div id="errorBox" class="hidden bg-red-600 p-6 rounded-xl max-w-md mx-auto mt-6">
+        <h2 class="text-xl font-bold mb-2">⚠️ Dépôt introuvable</h2>
+        <p class="mb-4">Il semble que votre solde soit vide. Veuillez effectuer un dépôt d'au moins <strong>2000 XOF ou plus</strong> pour débloquer l'accès aux signaux et commencer à générer des profits.</p>
+        <a href="https://reffpa.com/L?tag=d_5213909m_97c__[]general[]_d173877_l250544_adaptive_banner&site=5213909&ad=97&r=registration" target="_blank" id="depositButton" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg transition">
+          Déposez maintenant sur 1xBet
+        </a>
+        <div class="mt-6 bg-red-800 text-white p-4 rounded-lg font-bold text-center">
+          <div class="mb-1 text-lg">Votre code promo : <span class="bg-black p-1 rounded text-green-400">WRE212</span></div>
+          <div>N'oubliez pas de vous inscrire <span class="underline">uniquement</span> avec ce code pour un accès complet à toutes les fonctionnalités !</div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-gray-800 py-12 px-6 text-center">
+      <h3 class="text-2xl font-bold text-green-400 mb-6">Gagnants du jour (RM)</h3>
+      <div class="grid md:grid-cols-2 gap-4 text-left max-w-4xl mx-auto text-sm text-green-300">
+<p>👤 Utilisateur : 1218473422 – 3 748 544 XOF</p>
+<p>👤 Utilisateur : 9912384741 – 3 241 200 XOF</p>
+<p>👤 Utilisateur : 3099234822 – 2 089 760 XOF</p>
+<p>👤 Utilisateur : 1187339121 – 1 480 000 XOF</p>
+<p>👤 Utilisateur : 4412900113 – 1 901 800 XOF</p>
+<p>👤 Utilisateur : 8283721091 – 2 729 120 XOF</p>
+<p>👤 Utilisateur : 7751937742 – 1 584 340 XOF</p>
+<p>👤 Utilisateur : 5554921811 – 1 380 840 XOF</p>
+<p>👤 Utilisateur : 1983238742 – 1 184 000 XOF</p>
+<p>👤 Utilisateur : 3377749301 – 1 067 080 XOF</p>
+      </div>
+    </section>
+    <section id="games" class="bg-gray-800 py-12 px-6 text-center">
+      <h3 class="text-2xl font-bold text-green-400 mb-6">Jeux pris en charge</h3>
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold mb-2">🎮 Aviator</h4>
+          <p class="text-gray-300">Prédisez quand encaisser avant que l'avion ne décolle. Notre IA détecte les modèles en temps réel.</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold mb-2">💣 Mines</h4>
+          <p class="text-gray-300">Évitez les bombes, encaissez vos gains. Notre système trouve les chemins à faible risque pour des gains maximaux.</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold mb-2">🥅 Penalty</h4>
+          <p class="text-gray-300">Sachez où tirer ou plonger. Battez le gardien grâce à des prédictions basées sur les données.</p>
+        </div>
+      </div>
+    </section>
+    <section id="how" class="bg-gray-900 py-12 px-6 text-center">
+      <h3 class="text-2xl font-bold text-green-400 mb-6">Comment ça marche</h3>
+      <div class="max-w-3xl mx-auto space-y-4 text-gray-300">
+        <p>📡 Notre IA analyse les données de jeu en direct et historiques 24/7.</p>
+        <p>💡 Elle identifie des modèles qui permettent des profits constants.</p>
+        <p>📲 Vous recevez des signaux fiables en temps réel directement sur votre appareil.</p>
+      </div>
+    </section>
+    <section class="bg-black py-12 px-6 text-center">
+      <h3 class="text-xl font-bold text-green-400 mb-4">[ Console – Journal de surveillance ]</h3>
+      <div class="console-box max-w-3xl mx-auto text-left" id="console">
+        <p>[INFO] Service de prédiction actif ✅</p>
+      </div>
+    </section>
+    <footer class="text-center text-gray-500 text-sm py-6">
+      © 2025 AI Predictions. Non affilié à 1xBet. Jouez de manière responsable.
+    </footer>
+  </div>
+  <script>
+    setTimeout(() => {
+      document.getElementById("loading").classList.add("hidden-screen");
+      document.getElementById("mainContent").classList.remove("hidden-screen");
+    }, 3000);
+
+    document.getElementById("connectButton").addEventListener("click", () => {
+      const userId = document.getElementById("userId").value;
+      if (userId) {
+        document.getElementById("accountIdDisplay").innerText = userId;
+        document.getElementById("connectionSuccess").classList.remove("hidden");
+        document.getElementById("errorBox").classList.add("hidden");
+      }
+    });
+
+    document.getElementById("getSignalButton").addEventListener("click", () => {
+      document.getElementById("errorBox").classList.remove("hidden");
+    });
+  </script>
+</body>
+</html>
